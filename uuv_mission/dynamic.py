@@ -78,6 +78,12 @@ class Mission:
     def from_csv(cls, file_name: str):
         # Read the CSV file using pandas
         df = pd.read_csv(file_name)
+         
+        # Extract the columns as numpy arrays
+        reference = df['reference'].to_numpy()
+        cave_height = df['cave_height'].to_numpy()
+        cave_depth = df['cave_depth'].to_numpy()
+        
         pass
 
 

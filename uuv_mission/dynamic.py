@@ -84,7 +84,8 @@ class Mission:
         cave_height = df['cave_height'].to_numpy()
         cave_depth = df['cave_depth'].to_numpy()
         
-        pass
+        # Create and return a new Mission instance
+        return cls(reference, cave_height, cave_depth)
 
 
 class ClosedLoop:

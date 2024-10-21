@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from .controller import Controller
 from .terrain import generate_reference_and_limits
 
 class Submarine:
@@ -94,6 +95,8 @@ class ClosedLoop:
         self.controller = controller
 
     def simulate(self,  mission: Mission, disturbances: np.ndarray) -> Trajectory:
+
+        Controller = self.controller
 
         T = len(mission.reference)
         if len(disturbances) < T:

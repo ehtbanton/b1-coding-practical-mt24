@@ -1,7 +1,7 @@
 import numpy as np
 
 class Controller:
-    def __init__(self, Kp: float = 0.15, Kd: float = 0.6):
+    def __init__(self, Kp: float = 0.12, Kd: float = 0.5):
         self.Kp = Kp
         self.Kd = Kd
         self.previous_error = 0

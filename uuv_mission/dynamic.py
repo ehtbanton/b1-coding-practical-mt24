@@ -96,8 +96,6 @@ class ClosedLoop:
 
     def simulate(self,  mission: Mission, disturbances: np.ndarray) -> Trajectory:
 
-        Controller = self.controller
-
         T = len(mission.reference)
         if len(disturbances) < T:
             raise ValueError("Disturbances must be at least as long as mission duration")
@@ -109,10 +107,9 @@ class ClosedLoop:
         for t in range(T):
             positions[t] = self.plant.get_position()
             observation_t = self.plant.get_depth()
-            reference_t = mission.reference[t]
 
             # Computing control action
-            actions[t] = self.controller.compute(reference_t, observation_t)
+            actions[t] = self.controller.compute(mission.reference[t], observation_t)
             
             # Applying control action and disturbance
             self.plant.transition(actions[t], disturbances[t])
